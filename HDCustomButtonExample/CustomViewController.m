@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"演示";
     
     __weak typeof(self) weakSelf = self;
     

@@ -62,6 +62,7 @@ static NSString *KCellIdef = @"KCell";
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     CustomViewController *next = [[CustomViewController alloc] init];
     next.index = indexPath.row;
+    next.title = _typeArray[indexPath.row][1];
     [self.navigationController pushViewController:next animated:YES];
 }
 

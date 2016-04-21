@@ -186,7 +186,7 @@ static char HDCustomButtonClickBlockViewKey;
     if (title == nil && imageName != nil) {
         [itemButtom setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     } else {
-        [itemButtom setFrame:CGRectMake(0, 0, 40, 40)];
+        [itemButtom setFrame:CGRectMake(0, 0, 80, 40)];
     }
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]
