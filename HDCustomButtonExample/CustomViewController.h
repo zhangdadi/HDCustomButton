@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomViewController : UIViewController
-
+@property (assign, nonatomic) NSInteger index;
 @end

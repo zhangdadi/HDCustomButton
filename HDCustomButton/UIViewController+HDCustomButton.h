@@ -33,11 +33,11 @@
  */
 typedef NS_ENUM(NSUInteger, HDButtonType) {
     /**
-     *  返回按钮
+     *  返回按钮 - 有右滑返回手势功能
      */
     HDButtonTypeBack = 0,
     /**
-     *  导航栏左边按钮
+     *  导航栏左边按钮 - 无右滑返回手势功能
      */
     HDButtonTypeLeft,
     /**
@@ -79,7 +79,7 @@ typedef void(^HDButtonTypeBlock)();
 /**
  *  回调block
  */
-@property (nonatomic, copy, readonly) UIViewController<HDCustomButtonProtocol> *(^hd_clickBlock)(HDButtonTypeBlock hd_clickBlock);
+@property (nonatomic, copy, readonly) UIViewController<HDCustomButtonProtocol> *(^hd_block)(HDButtonTypeBlock hd_block);
 
 /**
  *  完成

@@ -84,10 +84,10 @@ static char HDCustomButtonClickBlockViewKey;
     };
 }
 
-- (UIViewController<HDCustomButtonProtocol> *(^)(HDButtonTypeBlock))hd_clickBlock {
-    return ^id(HDButtonTypeBlock hd_clickBlock) {
+- (UIViewController<HDCustomButtonProtocol> *(^)(HDButtonTypeBlock))hd_block {
+    return ^id(HDButtonTypeBlock hd_block) {
         objc_setAssociatedObject(self, &HDCustomButtonClickBlockViewKey,
-                                 hd_clickBlock,
+                                 hd_block,
                                  OBJC_ASSOCIATION_COPY_NONATOMIC);
         return self;
     };
@@ -136,6 +136,10 @@ static char HDCustomButtonClickBlockViewKey;
             {
                 if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
                     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+                    NSArray *viewControllers = self.navigationController.viewControllers;
+                    if (viewControllers.count >= 2) {
+                        ((UIViewController *)viewControllers[viewControllers.count - 2]).navigationItem.title = @"";
+                    }
                 }
             }
 
@@ -155,6 +159,7 @@ static char HDCustomButtonClickBlockViewKey;
                 break;
         }
         
+        [self hd_clean];
         return barButtonItem;
     };
 }
@@ -181,7 +186,7 @@ static char HDCustomButtonClickBlockViewKey;
     if (title == nil && imageName != nil) {
         [itemButtom setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
     } else {
-        [itemButtom setFrame:CGRectMake(0, 0, 80, 40)];
+        [itemButtom setFrame:CGRectMake(0, 0, 40, 40)];
     }
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]
@@ -205,5 +210,11 @@ static char HDCustomButtonClickBlockViewKey;
     }
 }
 
+- (void)hd_clean {
+    self.hd_title(nil);
+    self.hd_imageName(nil);
+    self.hd_targe(nil, nil);
+    self.hd_block(nil);
+}
 
 @end

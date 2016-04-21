@@ -36,10 +36,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    self.window.backgroundColor = [UIColor whiteColor];
     UIImage *nav_Image  = [AppDelegate imageWithColor:ColorForMainDefalt];
     [[UINavigationBar appearance] setBackgroundImage:nav_Image forBarMetrics:0];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:19],
+                                                         NSForegroundColorAttributeName:[UIColor whiteColor]
+                                                         };
     
     return YES;
 }
