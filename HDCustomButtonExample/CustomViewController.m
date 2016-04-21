@@ -10,17 +10,34 @@
 #import "UIViewController+HDCustomButton.h"
 
 @interface CustomViewController ()
-
+@property (nonatomic, strong) NSString *str;
 @end
 
 @implementation CustomViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    //-------------------action回调按钮-----------------
+    //默认的返回按钮
     self.hd_type(HDButtonTypeBack).hd_targe(self, @selector(leftButtonClick)).hd_end();
+    
     self.hd_type(HDButtonTypeRight).hd_title(@"测试").hd_targe(self, @selector(rightButtonClick)).hd_end();
+    
+    
+    //-------------------block回调按钮-----------------
+    __weak typeof(self) weakSelf = self;
+    
+    //默认的返回按钮
+    self.hd_type(HDButtonTypeBack).hd_clickBlock(^{
+        NSLog(@"leftButtonClick-Block");
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }).hd_end();
+
+    self.hd_type(HDButtonTypeRight).hd_title(@"测试").hd_clickBlock(^{
+        NSLog(@"rightButtonClick-Block");
+    }).hd_end();
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,15 +55,5 @@
 
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
