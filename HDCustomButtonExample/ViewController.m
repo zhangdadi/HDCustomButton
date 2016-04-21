@@ -1,0 +1,29 @@
+//
+//  ViewController.m
+//  HDCustomButtonExample
+//
+//  Created by Aaron on 16/4/13.
+//  Copyright © 2016年 HD. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "UIViewController+HDCustomButton.h"
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end
